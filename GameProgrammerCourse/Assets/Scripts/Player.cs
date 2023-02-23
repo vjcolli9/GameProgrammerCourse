@@ -3,6 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]float _speed = 1;
+    [SerializeField] float _jumpForce = 200;
+    [SerializeField] float _fastFallForce = 200;
 
     // Update is called once per frame
     void Update()
@@ -22,5 +24,15 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = (horizontal < 0);
         }
         
+        if (Input.GetButtonDown("Fire1"))
+        {
+            rigidbody2D.AddForce(Vector2.up * _jumpForce);
+        }
+
+        /*if (Input.GetButtonDown("Fire2"))
+        {
+            rigidbody2D.AddForce(Vector2.up * -_jumpForce);
+            rigidbody2D.AddForce(Vector2.down * _fastFallForce);
+        }*/
     }
 }

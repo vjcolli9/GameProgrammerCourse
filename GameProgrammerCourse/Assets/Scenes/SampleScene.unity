@@ -191,17 +191,18 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.2857143, y: -0.64285713}
-      - {x: 0.326087, y: -0.38954782}
-      - {x: 0.4549405, y: -0.39836305}
-      - {x: 0.47142857, y: 0.42857143}
-      - {x: 0.3, y: 0.6571429}
-      - {x: -0.25714287, y: 0.6571429}
-      - {x: -0.45714286, y: 0.51428574}
-      - {x: -0.47142857, y: 0.44285715}
-      - {x: -0.47142857, y: -0.028571429}
-      - {x: -0.42857143, y: -0.08571429}
-      - {x: -0.47142857, y: -0.22857143}
-      - {x: -0.47142857, y: -0.41428572}
+      - {x: 0.30623484, y: -0.3630786}
+      - {x: 0.31597656, y: -0.1700651}
+      - {x: 0.43793368, y: 0.027512312}
+      - {x: 0.4317245, y: 0.3723242}
+      - {x: 0.25367862, y: 0.5942781}
+      - {x: -0.008992761, y: 0.6803036}
+      - {x: -0.37111762, y: 0.4878165}
+      - {x: -0.45488518, y: 0.36344922}
+      - {x: -0.45239276, y: 0.053916633}
+      - {x: -0.40636322, y: -0.038124986}
+      - {x: -0.36990517, y: -0.0889764}
+      - {x: -0.32548827, y: -0.17316681}
       - {x: -0.32857144, y: -0.42857143}
       - {x: -0.3, y: -0.6571429}
       - {x: 0.27142859, y: -0.6571429}
@@ -210,20 +211,20 @@ PolygonCollider2D:
       - {x: -0.35714287, y: 0.27142859}
       - {x: -0.34285715, y: 0.2857143}
       - {x: -0.12857144, y: 0.5285714}
-      - {x: -0.18571429, y: 0.6}
+      - {x: -0.21880083, y: 0.61985195}
       - {x: -0.4, y: 0.2857143}
       - {x: -0.34285715, y: 0.028571429}
       - {x: -0.32857144, y: 0.042857144}
-    - - {x: 0.34285715, y: 0.35714287}
+    - - {x: 0.32631376, y: 0.4497854}
       - {x: 0.21428572, y: 0.5285714}
       - {x: 0.12857144, y: 0.54285717}
       - {x: 0.21428572, y: 0.47142857}
       - {x: 0.27142859, y: 0.41428572}
-      - {x: 0.34285715, y: 0.2857143}
-      - {x: 0.34285715, y: 0.1}
-      - {x: 0.32857144, y: 0.08571429}
-      - {x: 0.32857144, y: 0.042857144}
-      - {x: 0.34285715, y: 0.042857144}
+      - {x: 0.10463336, y: 0.23277536}
+      - {x: 0.3660176, y: -0.091902636}
+      - {x: 0.41790545, y: 0.036084123}
+      - {x: 0.454301, y: 0.13549969}
+      - {x: 0.32631376, y: 0.21490785}
 --- !u!212 &71769377
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -304,6 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2.39
+  _jumpForce: 350
+  _fastFallForce: 500
 --- !u!95 &71769380
 Animator:
   serializedVersion: 5
@@ -334,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 354599378}
   - component: {fileID: 354599377}
+  - component: {fileID: 354599379}
   m_Layer: 0
   m_Name: grassHalfMid
   m_TagString: Untagged
@@ -401,13 +405,39 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354599376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1535, y: -3.58, z: 0}
+  m_LocalPosition: {x: -1.1535, y: -2.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &354599379
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354599376}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.22339976}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 3, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5532005}
+  m_EdgeRadius: 0
 --- !u!1 &422297757
 GameObject:
   m_ObjectHideFlags: 0
