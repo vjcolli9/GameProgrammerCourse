@@ -33,10 +33,10 @@ public class Player : MonoBehaviour
             rigidbody2D.AddForce(Vector2.up * _jumpForce);
         }
 
-        /*if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
             rigidbody2D.AddForce(Vector2.up * -_jumpForce);
             rigidbody2D.AddForce(Vector2.down * _fastFallForce);
-        }*/
+        }
     }
 }
