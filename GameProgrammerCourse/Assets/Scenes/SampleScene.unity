@@ -738,6 +738,7 @@ GameObject:
   - component: {fileID: 485161885}
   - component: {fileID: 485161884}
   - component: {fileID: 485161887}
+  - component: {fileID: 485161888}
   m_Layer: 0
   m_Name: flyFly1
   m_TagString: Untagged
@@ -844,6 +845,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543a6e1da0d26e0419844104af890237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &485161888
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485161883}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0285715, y: 0.51428574}
+    newSize: {x: 1.0285715, y: 0.51428574}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.028571429, y: 0.25714287}
+      - {x: -0.1, y: 0.24285714}
+      - {x: -0.12857144, y: 0.25714287}
+      - {x: -0.45714286, y: 0.25714287}
+      - {x: -0.51428574, y: 0.22857143}
+      - {x: -0.51428574, y: -0.014285714}
+      - {x: -0.31024885, y: -0.07319069}
+      - {x: -0.22998679, y: -0.24481973}
+      - {x: 0.29395986, y: -0.2517091}
+      - {x: 0.33660454, y: -0.23249659}
+      - {x: 0.34641787, y: -0.17302625}
+      - {x: 0.32798958, y: -0.067112446}
+      - {x: 0.51428574, y: 0.05358249}
+      - {x: 0.51428574, y: 0.25714287}
 --- !u!1 &493003826
 GameObject:
   m_ObjectHideFlags: 0

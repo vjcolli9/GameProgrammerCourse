@@ -6,6 +6,14 @@ public class Player : MonoBehaviour
     [SerializeField] float _jumpForce = 200;
     [SerializeField] float _fastFallForce = 200;
 
+    Vector3 _startPosition;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _startPosition = transform.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,5 +46,10 @@ public class Player : MonoBehaviour
             rigidbody2D.AddForce(Vector2.up * -_jumpForce);
             rigidbody2D.AddForce(Vector2.down * _fastFallForce);
         }
+    }
+
+    internal void ResetToStart()
+    {
+        transform.position = _startPosition;
     }
 }
