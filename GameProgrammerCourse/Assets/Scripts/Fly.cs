@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fly : MonoBehaviour
 {
-    Vector2 _startPosition;
+    Vector3 _startPosition;
     Vector2 _direction = Vector2.up;
     // Start is called before the first frame update
     void Start()
@@ -22,4 +22,5 @@ public class Fly : MonoBehaviour
             _direction *= -1;
         }
     }
+    
 }
