@@ -5,13 +5,17 @@ public class Player : MonoBehaviour
     [SerializeField]float _speed = 1;
     [SerializeField] float _jumpForce = 200;
     [SerializeField] float _fastFallForce = 200;
+    [SerializeField] int _maxJumps = 2;
 
     Vector3 _startPosition;
+    int _jumpsRemaining;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         _startPosition = transform.position;
+        _jumpsRemaining = _maxJumps;
     }
 
     // Update is called once per frame
@@ -36,9 +40,10 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = (horizontal < 0);
         }
         
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _jumpsRemaining > 0)
         {
             rigidbody2D.AddForce(Vector2.up * _jumpForce);
+            _jumpsRemaining--;
         }
 
         if (Input.GetButtonDown("Fire2"))
@@ -46,6 +51,11 @@ public class Player : MonoBehaviour
             rigidbody2D.AddForce(Vector2.up * -_jumpForce);
             rigidbody2D.AddForce(Vector2.down * _fastFallForce);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        _jumpsRemaining = _maxJumps;
     }
 
     internal void ResetToStart()
