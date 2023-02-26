@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _jumpForce = 200;
     [SerializeField] float _fastFallForce = 200;
     [SerializeField] int _maxJumps = 2;
+    [SerializeField] Transform _feet;
 
     Vector3 _startPosition;
     int _jumpsRemaining;
@@ -55,7 +56,11 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        _jumpsRemaining = _maxJumps;
+        var hit = Physics2D.OverlapCircle(_feet.position, 0.1f, LayerMask.GetMask("Ground"));
+        if (hit != null)
+        {
+            _jumpsRemaining = _maxJumps;
+        }
     }
 
     internal void ResetToStart()
