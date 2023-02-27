@@ -9,11 +9,14 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _feet;
     [SerializeField] float _downPull = 0.1f;
     [SerializeField] float _fastFallTimer = 0.45f;
+    [SerializeField] float _maxJumpDuration = 0.1f;
 
     Vector3 _startPosition;
     int _jumpsRemaining;
     bool _canFastFall = false;
     float _fallTimer;
+    float _jumpTimer = 0;
+    
 
 
     // Start is called before the first frame update
@@ -52,7 +55,14 @@ public class Player : MonoBehaviour
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, _jumpVelocity);
             _jumpsRemaining--;
             _fallTimer = 0;
+            _jumpTimer = 0;
             _canFastFall = true;
+        }
+        else if(Input.GetButton("Fire1") && _jumpTimer <= _maxJumpDuration)
+        {
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, _jumpVelocity);
+            _fallTimer = 0;
+            _jumpTimer += Time.deltaTime;
         }
 
         if(isGrounded)
