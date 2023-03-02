@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     bool _canFastFall = false;
     float _fallTimer;
     float _jumpTimer = 0;
-    
+    float _downForce = 0;
 
 
     // Start is called before the first frame update
@@ -65,20 +65,25 @@ public class Player : MonoBehaviour
             
         }
 
-        if(_jumpTimer < 1f)
+        if(_jumpTimer < 100f)
             _jumpTimer += Time.deltaTime;
 
         if (isGrounded && _fallTimer > 0)
         {
             _fallTimer = 0;
             _jumpsRemaining = _maxJumps;
+            _downForce = 0;
 
         }
         else
         {
-            _fallTimer += Time.deltaTime;
-            var downForce = _downPull * _fallTimer * _fallTimer;
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, (rigidbody2D.velocity.y - downForce));
+            if(_fallTimer < 100f)
+                _fallTimer += Time.deltaTime;
+
+            if(_downForce < 100f)
+                _downForce = _downPull * _fallTimer * _fallTimer;
+
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, (rigidbody2D.velocity.y - _downForce));
 
             //fastfall
             if (Input.GetButtonDown("Fire2") && _fallTimer >= _fastFallTimer && _canFastFall == true)
