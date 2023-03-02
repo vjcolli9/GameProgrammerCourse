@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     float _fallTimer;
     float _jumpTimer = 0;
     float _downForce = 0;
+    Rigidbody2D _rigidbody2D;
+    Animator _animator;
+    SpriteRenderer _spriteRenderer;
+    float _horizontal;
+    private bool _isGrounded;
 
 
     // Start is called before the first frame update
@@ -24,51 +29,31 @@ public class Player : MonoBehaviour
     {
         _startPosition = transform.position;
         _jumpsRemaining = _maxJumps;
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var hit = Physics2D.OverlapCircle(_feet.position, 0.1f, LayerMask.GetMask("Ground"));
-        bool isGrounded = hit != null;
-        var horizontal = Input.GetAxis("Horizontal") * _speed;
-        var rigidbody2D = GetComponent<Rigidbody2D>();
+        UpdateIsGrounded();
 
-        if(Mathf.Abs(horizontal) >= 1)
-        {
-            rigidbody2D.velocity = new Vector2(horizontal, rigidbody2D.velocity.y);
-        }
+        ReadHorizontalInput();
+        MoveHorizontal();
 
-        var animator = GetComponent<Animator>();
-        bool walking = horizontal != 0;
-        animator.SetBool("Walk", walking);
+        UpdateAnimator();
+        UpdateSpriteDirection();
 
-        if (horizontal != 0)
-        {
-            var spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.flipX = (horizontal < 0);
-        }
-        
-        if (Input.GetButtonDown("Fire1") && _jumpsRemaining > 0)
-        {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, _jumpVelocity);
-            _jumpsRemaining--;
-            //Debug.Log($"Jumps remaining {_jumpsRemaining}");
-            _fallTimer = 0;
-            _jumpTimer = 0;
-            _canFastFall = true;
-        }
-        else if(Input.GetButton("Fire1") && _jumpTimer <= _maxJumpDuration)
-        {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, _jumpVelocity);
-            _fallTimer = 0;
-            
-        }
+        if (ShouldStartJump())
+            Jump();
+        else if (ShouldContinueJump())
+            ContinueJump();
 
-        if(_jumpTimer < 100f)
+        if (_jumpTimer < 100f)
             _jumpTimer += Time.deltaTime;
 
-        if (isGrounded && _fallTimer > 0)
+        if (_isGrounded && _fallTimer > 0)
         {
             _fallTimer = 0;
             _jumpsRemaining = _maxJumps;
@@ -77,23 +62,81 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(_fallTimer < 100f)
+            if (_fallTimer < 100f)
                 _fallTimer += Time.deltaTime;
 
-            if(_downForce < 100f)
+            if (_downForce < 100f)
                 _downForce = _downPull * _fallTimer * _fallTimer;
 
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, (rigidbody2D.velocity.y - _downForce));
+            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _downForce));
 
             //fastfall
             if (Input.GetButtonDown("Fire2") && _fallTimer >= _fastFallTimer && _canFastFall == true)
             {
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, (rigidbody2D.velocity.y - _fastFallForce));
+                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _fastFallForce));
                 _canFastFall = false;
             }
         }
 
-        
+
+    }
+
+    private void ContinueJump()
+    {
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+        _fallTimer = 0;
+    }
+
+    private bool ShouldContinueJump()
+    {
+        return Input.GetButton("Fire1") && _jumpTimer <= _maxJumpDuration;
+    }
+
+    private void Jump()
+    {
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+        _jumpsRemaining--;
+        _fallTimer = 0;
+        _jumpTimer = 0;
+        _canFastFall = true;
+    }
+
+    private bool ShouldStartJump()
+    {
+        return Input.GetButtonDown("Fire1") && _jumpsRemaining > 0;
+    }
+
+    private void MoveHorizontal()
+    {
+        if (Mathf.Abs(_horizontal) >= 1)
+        {
+            _rigidbody2D.velocity = new Vector2(_horizontal, _rigidbody2D.velocity.y);
+        }
+    }
+
+    private void ReadHorizontalInput()
+    {
+        _horizontal = Input.GetAxis("Horizontal") * _speed;
+    }
+
+    private void UpdateSpriteDirection()
+    {
+        if (_horizontal != 0)
+        {
+            _spriteRenderer.flipX = (_horizontal < 0);
+        }
+    }
+
+    void UpdateAnimator()
+    {
+        bool walking = _horizontal != 0;
+        _animator.SetBool("Walk", walking);
+    }
+
+    void UpdateIsGrounded()
+    {
+        var hit = Physics2D.OverlapCircle(_feet.position, 0.1f, LayerMask.GetMask("Ground"));
+        _isGrounded = hit != null;
     }
 
     internal void ResetToStart()
