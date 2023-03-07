@@ -471,11 +471,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430db8dd40793c040a3799e1bf6a8449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _downSprite: {fileID: 21300000, guid: e8a6ccfc3629879479fe28efb18460a8, type: 3}
-  _onEnter:
+  _pressedSprite: {fileID: 21300000, guid: e8a6ccfc3629879479fe28efb18460a8, type: 3}
+  _onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1527938201}
+      - m_Target: {fileID: 1765272538}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -487,7 +487,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2052300969}
+  _onReleased:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1765272538}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -497,7 +500,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!61 &95948779
 BoxCollider2D:
@@ -585,7 +588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95948777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.9900055, y: -6.0001245, z: 0}
+  m_LocalPosition: {x: 2, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1204,7 +1207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2240445497889047532, guid: ec2c0f98ab523c842a9f21fb04a54ba9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2c0f98ab523c842a9f21fb04a54ba9, type: 3}
@@ -2528,11 +2531,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2c0f98ab523c842a9f21fb04a54ba9, type: 3}
---- !u!1 &1527938201 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5328740845012769707, guid: bd8ea5a80c711204686c1865c33544a4, type: 3}
-  m_PrefabInstance: {fileID: 5328740845199497851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1540780309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2649,7 +2647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1765272539
 Transform:
   m_ObjectHideFlags: 0
@@ -2775,11 +2773,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4522965289380021600, guid: 4213d0a922ddced48b2f8ad28c0ae2f5, type: 3}
   m_PrefabInstance: {fileID: 735118170}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2052300969 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2240445497889047532, guid: ec2c0f98ab523c842a9f21fb04a54ba9, type: 3}
-  m_PrefabInstance: {fileID: 475629697}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2061937357 stripped
 Transform:
@@ -3081,7 +3074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5328740845012769707, guid: bd8ea5a80c711204686c1865c33544a4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8ea5a80c711204686c1865c33544a4, type: 3}
