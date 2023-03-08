@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField]float _speed = 1;
+    [SerializeField] float _slipFactor = 1;
+    [Header("Jump")]
     [SerializeField] float _jumpVelocity = 10;
     [SerializeField] float _fastFallForce = 1;
     [SerializeField] int _maxJumps = 2;
@@ -10,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _downPull = 0.1f;
     [SerializeField] float _fastFallTimer = 0.45f;
     [SerializeField] float _maxJumpDuration = 0.1f;
+    
 
     Vector3 _startPosition;
     int _jumpsRemaining;
@@ -21,7 +25,9 @@ public class Player : MonoBehaviour
     Animator _animator;
     SpriteRenderer _spriteRenderer;
     float _horizontal;
-    private bool _isGrounded;
+    bool _isGrounded;
+    bool _isOnSlipperySurface;
+
 
 
     // Start is called before the first frame update
@@ -40,7 +46,10 @@ public class Player : MonoBehaviour
         UpdateIsGrounded();
 
         ReadHorizontalInput();
-        MoveHorizontal();
+        if (_isOnSlipperySurface)
+            SlipHorizontal();
+        else
+            MoveHorizontal();
 
         UpdateAnimator();
         UpdateSpriteDirection();
@@ -108,10 +117,17 @@ public class Player : MonoBehaviour
 
     private void MoveHorizontal()
     {
-        if (Mathf.Abs(_horizontal) >= 1)
-        {
-            _rigidbody2D.velocity = new Vector2(_horizontal, _rigidbody2D.velocity.y);
-        }
+        _rigidbody2D.velocity = new Vector2(_horizontal * _speed, _rigidbody2D.velocity.y);
+    }
+
+    private void SlipHorizontal()
+    {
+        var desiredVelocity = new Vector2(_horizontal * _speed, _rigidbody2D.velocity.y);
+        var smoothedVelocity = Vector2.Lerp(
+            _rigidbody2D.velocity, 
+            desiredVelocity, 
+            Time.deltaTime / _slipFactor);
+        _rigidbody2D.velocity = smoothedVelocity;
     }
 
     private void ReadHorizontalInput()
@@ -137,6 +153,11 @@ public class Player : MonoBehaviour
     {
         var hit = Physics2D.OverlapCircle(_feet.position, 0.1f, LayerMask.GetMask("Ground"));
         _isGrounded = hit != null;
+
+        if (hit != null)
+            _isOnSlipperySurface = hit.CompareTag("Slippery");
+        else
+            _isOnSlipperySurface = false;          
     }
 
     internal void ResetToStart()
