@@ -392,9 +392,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _slipFactor: 1
   _jumpVelocity: 8.5
   _fastFallForce: 10
-  _maxJumps: 1
+  _maxJumps: 2
   _feet: {fileID: 614275025}
   _downPull: 0.1
   _fastFallTimer: 0.35
