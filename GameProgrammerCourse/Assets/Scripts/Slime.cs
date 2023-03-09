@@ -48,7 +48,7 @@ public class Slime : MonoBehaviour
     void TurnAround()
     {
         _direction *= -1;
-        var spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.flipX = _direction > 0;
     }
 
@@ -58,6 +58,22 @@ public class Slime : MonoBehaviour
         if (player == null)
             return;
 
-        player.ResetToStart();
+        Vector2 normal = collision.contacts[0].normal;
+        if (normal.y <= -0.5)
+        {
+            Die();
+        }
+        else
+        {
+            player.ResetToStart();
+        }
+        //Debug.Log($"Normal = {normal}");
+
+
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
