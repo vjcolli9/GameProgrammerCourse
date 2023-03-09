@@ -7,8 +7,10 @@ public class Slime : MonoBehaviour
 {
     [SerializeField] Transform _leftSensor;
     [SerializeField] Transform _rightSensor;
+    [SerializeField] Sprite _deadSprite;
     Rigidbody2D _rigidbody2D;
     float _direction = -1f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +63,7 @@ public class Slime : MonoBehaviour
         Vector2 normal = collision.contacts[0].normal;
         if (normal.y <= -0.5)
         {
-            Die();
+            StartCoroutine(Die());
         }
         else
         {
@@ -72,8 +74,26 @@ public class Slime : MonoBehaviour
 
     }
 
-    void Die()
+    IEnumerator Die()
     {
-        Destroy(gameObject);
+
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = _deadSprite;
+        GetComponent<Animator>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+
+        float alpha = 1f;
+        while(alpha > 0)
+        {
+            yield return null;
+            alpha -= Time.deltaTime;
+            spriteRenderer.color = new Color(1, 1, 1, alpha);
+
+        }
+        
+        spriteRenderer.color = new Color();
+        //Destroy(gameObject);
     }
 }
