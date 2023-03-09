@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _downForce));
 
             //fastfall
-            if (Input.GetButtonDown("Fire2") && _fallTimer >= _fastFallTimer && _canFastFall == true)
+            if (Input.GetButtonDown("P1Vertical") && _fallTimer >= _fastFallTimer && _canFastFall == true)
             {
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _fastFallForce));
                 _canFastFall = false;
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 
     private bool ShouldContinueJump()
     {
-        return Input.GetButton("Fire1") && _jumpTimer <= _maxJumpDuration;
+        return Input.GetButton("P1Jump") && _jumpTimer <= _maxJumpDuration;
     }
 
     private void Jump()
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
     private bool ShouldStartJump()
     {
-        return Input.GetButtonDown("Fire1") && _jumpsRemaining > 0;
+        return Input.GetButtonDown("P1Jump") && _jumpsRemaining > 0;
     }
 
     private void MoveHorizontal()
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
 
     private void ReadHorizontalInput()
     {
-        _horizontal = Input.GetAxis("Horizontal") * _speed;
+        _horizontal = Input.GetAxis("P1Horizontal") * _speed;
     }
 
     private void UpdateSpriteDirection()
