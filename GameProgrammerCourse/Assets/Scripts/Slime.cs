@@ -15,7 +15,7 @@ public class Slime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rigidbody2D.velocity = Vector2.left;
+        _rigidbody2D.velocity = new Vector2(-1f, _rigidbody2D.velocity.y);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
