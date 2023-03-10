@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] int _playerNumber = 1;
     [Header("Movement")]
     [SerializeField]float _speed = 1;
     [SerializeField] float _slipFactor = 1;
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _downForce));
 
             //fastfall
-            if (Input.GetButtonDown("P1Vertical") && _fallTimer >= _fastFallTimer && _canFastFall == true)
+            if (Input.GetButtonDown($"P{_playerNumber}FastFall") && _fallTimer >= _fastFallTimer && _canFastFall == true)
             {
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _fastFallForce));
                 _canFastFall = false;
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
 
     private bool ShouldContinueJump()
     {
-        return Input.GetButton("P1Jump") && _jumpTimer <= _maxJumpDuration;
+        return Input.GetButton($"P{_playerNumber}Jump") && _jumpTimer <= _maxJumpDuration;
     }
 
     private void Jump()
@@ -112,7 +113,7 @@ public class Player : MonoBehaviour
 
     private bool ShouldStartJump()
     {
-        return Input.GetButtonDown("P1Jump") && _jumpsRemaining > 0;
+        return Input.GetButtonDown($"P{_playerNumber}Jump") && _jumpsRemaining > 0;
     }
 
     private void MoveHorizontal()
@@ -132,7 +133,7 @@ public class Player : MonoBehaviour
 
     private void ReadHorizontalInput()
     {
-        _horizontal = Input.GetAxis("P1Horizontal") * _speed;
+        _horizontal = Input.GetAxis($"P{_playerNumber}Horizontal") * _speed;
     }
 
     private void UpdateSpriteDirection()
