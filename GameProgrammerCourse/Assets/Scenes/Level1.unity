@@ -492,6 +492,7 @@ MonoBehaviour:
   _onReleased:
     m_PersistentCalls:
       m_Calls: []
+  _playerNumber: 1
 --- !u!61 &95948779
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3109,7 +3110,7 @@ Animator:
   m_GameObject: {fileID: 1595826401}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5506f55a9a662ea4c8bdc0ae36a53bc0, type: 2}
+  m_Controller: {fileID: 22100000, guid: 6f5cd4c624ada4e40b5a3f9d069cfc10, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3203,7 +3204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 733a700249c8a1c4da7cd509dda329e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2d8c41374ef0ee489ad9349429091af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
