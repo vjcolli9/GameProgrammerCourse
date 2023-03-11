@@ -86,6 +86,11 @@ public class Player : MonoBehaviour
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _fastFallForce));
                 _canFastFall = false;
             }
+            else if (Input.GetAxis($"P{_playerNumber}Vertical") > 0.95 && _fallTimer >= _fastFallTimer && _canFastFall == true)
+            {
+                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_rigidbody2D.velocity.y - _fastFallForce));
+                 _canFastFall = false;
+            }
         }
 
 
