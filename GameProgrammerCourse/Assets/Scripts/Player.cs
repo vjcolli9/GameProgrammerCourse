@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     bool _isGrounded;
     bool _isOnSlipperySurface;
 
+    public int PlayerNumber => _playerNumber;
+
 
 
     // Start is called before the first frame update
