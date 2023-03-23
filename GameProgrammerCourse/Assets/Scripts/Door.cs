@@ -9,23 +9,32 @@ public class Door : MonoBehaviour
 
     [SerializeField] SpriteRenderer _rendererMid;
     [SerializeField] SpriteRenderer _rendererTop;
+    [SerializeField] int _requiredCoins = 3;
+    [SerializeField] Door _exit;
 
-    [ContextMenu("Open Door")]
+    //[ContextMenu("Open Door")]
     void Open()
     {
         _rendererMid.sprite = _openMid;
         _rendererTop.sprite = _openTop;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if(Coin.CoinsCollected >= _requiredCoins)
+        {
+            Open();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        var player = collision.GetComponent<Player>();
+        if (player != null && _exit != null)
+        {
+            player.TeleportTo(_exit.transform.position);
+        }
+
     }
 }

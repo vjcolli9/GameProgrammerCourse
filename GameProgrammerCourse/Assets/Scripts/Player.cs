@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -26,6 +27,8 @@ public class Player : MonoBehaviour
     Animator _animator;
     SpriteRenderer _spriteRenderer;
     float _horizontal;
+
+
     bool _isGrounded;
     bool _isOnSlipperySurface;
 
@@ -171,6 +174,12 @@ public class Player : MonoBehaviour
 
     internal void ResetToStart()
     {
-        transform.position = _startPosition;
+        _rigidbody2D.position = _startPosition;
+    }
+
+    internal void TeleportTo(Vector3 position)
+    {
+        _rigidbody2D.position = position;
+        _rigidbody2D.velocity = Vector2.zero;
     }
 }
