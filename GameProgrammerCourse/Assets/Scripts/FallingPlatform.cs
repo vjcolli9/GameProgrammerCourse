@@ -8,6 +8,8 @@ public class FallingPlatform : MonoBehaviour
     Coroutine _coroutine;
     HashSet<Player> _playersInTrigger = new HashSet<Player>();
     Vector3 _initialPosition;
+    [SerializeField] float _fallSpeed = 9;
+    bool _falling;
 
     void Start()
     {
@@ -42,12 +44,36 @@ public class FallingPlatform : MonoBehaviour
             yield return new WaitForSeconds(randomDelay);
             wiggleTimer += randomDelay;
         }
-        yield return new WaitForSeconds(1f);
+
         Debug.Log("Falling");
-        yield return new WaitForSeconds(3f);
+        _falling = true;
+        //Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach(var collider in GetComponents<Collider2D>())
+        {
+            collider.enabled = false;
+        }
+        float fallTimer = 0;
+
+        while(fallTimer < 3f)
+        {
+            transform.position += Vector3.down * Time.deltaTime * _fallSpeed;
+            fallTimer += Time.deltaTime;
+            Debug.Log(fallTimer);
+            yield return null;
+        }
+
+        Destroy(gameObject);
+        //yield return new WaitForSeconds(1f);
+        //Debug.Log("Falling");
+        //yield return new WaitForSeconds(3f);
     }
     void OnTriggerExit2D(Collider2D collision)
     {
+        if(_falling)
+        {
+            return;
+        }
+
         var player = collision.GetComponent<Player>();
         if (player == null)
             return;
