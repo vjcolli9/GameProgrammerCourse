@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    [SerializeField] Collectible[] _collectibles;
+    [SerializeField] List<Collectible> _collectibles;
     TMP_Text _remainingText;
 
     // Start is called before the first frame update
@@ -32,5 +32,10 @@ public class Collector : MonoBehaviour
             return;
 
         Debug.Log("Got All Gems");
+    }
+
+    void OnValidate()
+    {
+        _collectibles = _collectibles.Distinct().ToList();
     }
 }
