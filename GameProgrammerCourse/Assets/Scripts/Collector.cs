@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Collector : MonoBehaviour
 {
     [SerializeField] List<Collectible> _collectibles;
+    [SerializeField] UnityEvent _onCollectionComplete;
     TMP_Text _remainingText;
 
     // Start is called before the first frame update
@@ -32,6 +34,7 @@ public class Collector : MonoBehaviour
             return;
 
         Debug.Log("Got All Gems");
+        _onCollectionComplete.Invoke();
     }
 
     void OnValidate()
