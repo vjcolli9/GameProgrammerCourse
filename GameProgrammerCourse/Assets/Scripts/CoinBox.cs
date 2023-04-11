@@ -2,31 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinBox : MonoBehaviour
+public class CoinBox : HittableFromBelow
 {
     [SerializeField] int _totalCoins = 3;
-    [SerializeField] Sprite _usedSprite;
-    private int _remainingCoins;
+
+    int _remainingCoins;
+
+    protected override bool CanUse => _remainingCoins > 0;
 
     void Start()
     {
         _remainingCoins = _totalCoins;
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        var player = collision.collider.GetComponent<Player>();
-        if (player == null)
-            return;
 
-        if (collision.contacts[0].normal.y > 0 && _remainingCoins > 0)
+    protected override void Use()
+    {
+        base.Use();
+
+        _remainingCoins--;
+        Coin.CoinsCollected++;
+        /*if (_remainingCoins <= 0)
         {
-            _remainingCoins--;
-            Coin.CoinsCollected++;
-            if (_remainingCoins <= 0)
-            {
-                GetComponent<SpriteRenderer>().sprite = _usedSprite;
-            }
-        }
-            
-    }
+            GetComponent<SpriteRenderer>().sprite = _usedSprite;
+        }*/
+    }  
 }
