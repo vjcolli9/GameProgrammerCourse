@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemBox : HittableFromBelow
@@ -13,30 +11,21 @@ public class ItemBox : HittableFromBelow
         if(_item != null)
         _item.SetActive(false);
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    protected override bool CanUse => _used == false && _item != null;
+    protected override void Use()
     {
-        if (_used)
+        if (_item == null)
             return;
 
-        var player = collision.collider.GetComponent<Player>();
-        if (player == null)
-            return;
+        base.Use();
 
-        if (collision.contacts[0].normal.y > 0)
+        _used = true;
+        _item.SetActive(true);
+        var itemRigidbody = _item.GetComponent<Rigidbody2D>();
+        if (itemRigidbody != null)
         {
-            GetComponent<SpriteRenderer>().sprite = _usedSprite;
-            if (_item != null)
-            {
-                _used = true;
-                _item.SetActive(true);
-                var itemRigidbody = _item.GetComponent<Rigidbody2D>();
-                if(itemRigidbody != null)
-                {
-                    itemRigidbody.velocity = _itemLaunchVelocity;
-                }
-            }
-                
+            itemRigidbody.velocity = _itemLaunchVelocity;
         }
-
     }
 }
