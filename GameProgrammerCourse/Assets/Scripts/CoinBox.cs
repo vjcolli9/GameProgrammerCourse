@@ -17,8 +17,12 @@ public class CoinBox : HittableFromBelow
     {
         base.Use();
 
-        _remainingCoins--;
-        Coin.CoinsCollected++;
+        if(CanUse == true)
+        {
+            _remainingCoins--;
+            Coin.CoinsCollected++;
+        }
+        
         /*if (_remainingCoins <= 0)
         {
             GetComponent<SpriteRenderer>().sprite = _usedSprite;
