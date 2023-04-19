@@ -81,9 +81,15 @@ public class ToggleSwitch : MonoBehaviour
         }     
     }
 
-    private void OnValidate()
+    void OnValidate()
     {
-        
+        if (_startingDirection == ToggleDirection.Left)
+            GetComponent<SpriteRenderer>().sprite = _leftSprite;
+        else if (_startingDirection == ToggleDirection.Right)
+            GetComponent<SpriteRenderer>().sprite = _rightSprite;
+        else if (_startingDirection == ToggleDirection.Center)
+            GetComponent<SpriteRenderer>().sprite = _centerSprite;
+
     }
 
     public void LogUsingEvent()
