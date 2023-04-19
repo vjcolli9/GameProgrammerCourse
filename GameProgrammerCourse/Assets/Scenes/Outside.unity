@@ -494,6 +494,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Box
       objectReference: {fileID: 0}
+    - target: {fileID: 6334571264104436155, guid: 6f01d66116aaa394a86484f61bd1b40d, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334571264104436155, guid: 6f01d66116aaa394a86484f61bd1b40d, type: 3}
+      propertyPath: _itemPrefab
+      value: 
+      objectReference: {fileID: 2240445497889047532, guid: ec2c0f98ab523c842a9f21fb04a54ba9, type: 3}
+    - target: {fileID: 6334571264879295592, guid: 6f01d66116aaa394a86484f61bd1b40d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f01d66116aaa394a86484f61bd1b40d, type: 3}
 --- !u!4 &1730614747 stripped
