@@ -15743,6 +15743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fc1efce5b2e994d9722168880cb1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startingDirection: 1
   _onLeft:
     m_PersistentCalls:
       m_Calls:
@@ -15811,10 +15812,34 @@ MonoBehaviour:
         m_CallState: 2
   _onCenter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 236295952}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2139147460}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _leftSprite: {fileID: 21300000, guid: 530e823d58c5ae44cadae765c38f5c0e, type: 3}
   _rightSprite: {fileID: 21300000, guid: 8f5f5f73ee5d1b542b1707938ef419eb, type: 3}
-  _centerSprite: {fileID: 0}
+  _centerSprite: {fileID: 21300000, guid: 5109010ceab75654c9d282e1ed099db6, type: 3}
 --- !u!212 &1290221380
 SpriteRenderer:
   m_ObjectHideFlags: 0

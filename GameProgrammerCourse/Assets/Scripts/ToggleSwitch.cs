@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class ToggleSwitch : MonoBehaviour
 {
+    [SerializeField] ToggleDirection _startingDirection = ToggleDirection.Center;
     [SerializeField] UnityEvent _onLeft;
     [SerializeField] UnityEvent _onRight;
     [SerializeField] UnityEvent _onCenter;
@@ -15,7 +16,6 @@ public class ToggleSwitch : MonoBehaviour
 
     SpriteRenderer _spriteRenderer;
     ToggleDirection _currentDirection;
-    Sprite _midSprite;
 
     enum ToggleDirection
     {
@@ -27,7 +27,7 @@ public class ToggleSwitch : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _midSprite = _spriteRenderer.sprite;
+        SetToggleDirection(_startingDirection, true);
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -44,7 +44,7 @@ public class ToggleSwitch : MonoBehaviour
         bool playerWalkingRight = playerRigidBody.velocity.x > 0;
         bool playerWalkingLeft = playerRigidBody.velocity.x < 0;
 
-        //_spriteRenderer.sprite = wasOnRight && playerWalkingRight ? _rightSprite : _leftSprite;
+
         if (wasOnRight && playerWalkingRight)
         {
             SetToggleDirection(ToggleDirection.Right);
@@ -55,10 +55,12 @@ public class ToggleSwitch : MonoBehaviour
         }
     }
 
-    void SetToggleDirection(ToggleDirection direction)
+    void SetToggleDirection(ToggleDirection direction, bool force = false)
     {
-        if (_currentDirection == direction)
+
+        if (force == false && _currentDirection == direction)
             return;
+
         _currentDirection = direction;
         switch (direction)
         {
@@ -77,6 +79,11 @@ public class ToggleSwitch : MonoBehaviour
             default:
                 break;
         }     
+    }
+
+    private void OnValidate()
+    {
+        
     }
 
     public void LogUsingEvent()
