@@ -22,7 +22,10 @@ public class Flag : MonoBehaviour
 
     IEnumerator LoadAfterDelay()
     {
+        PlayerPrefs.SetInt(_sceneName + "Unlocked", 1);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(_sceneName);
     }
+
+    
 }
