@@ -9651,6 +9651,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold Coin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3329891531345673368, guid: e84d7af721a07864cbd6d055cdf12230, type: 3}
+      propertyPath: m_Pitch
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329891531345673368, guid: e84d7af721a07864cbd6d055cdf12230, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84d7af721a07864cbd6d055cdf12230, type: 3}
 --- !u!1001 &1652838222
@@ -10954,6 +10962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 3329891531345673368, guid: e84d7af721a07864cbd6d055cdf12230, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84d7af721a07864cbd6d055cdf12230, type: 3}
 --- !u!1001 &2240445497823268081
@@ -11483,6 +11495,34 @@ PrefabInstance:
       propertyPath: m_Targets.Array.data[1].target
       value: 
       objectReference: {fileID: 1595826407}
+    - target: {fileID: 4259337888032800387, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.230723
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259337888032800387, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.8503704
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259337888852784778, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.7381067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259337888852784778, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.8465433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259337889710183187, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: orthographic size
+      value: 14.581483
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259337889710183404, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.7381067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259337889710183404, guid: f1abf51dc639334418e42eb922646329, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.8465433
+      objectReference: {fileID: 0}
     - target: {fileID: 4259337889710183405, guid: f1abf51dc639334418e42eb922646329, type: 3}
       propertyPath: _target
       value: 

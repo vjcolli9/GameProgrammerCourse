@@ -12,7 +12,9 @@ public class Coin : MonoBehaviour
         if (player == null)
             return;
 
-        gameObject.SetActive(false);
+        GetComponent<AudioSource>().Play();
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
         CoinsCollected++;
         Debug.Log(CoinsCollected);
 
