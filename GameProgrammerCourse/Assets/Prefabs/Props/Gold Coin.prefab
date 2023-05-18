@@ -115,6 +115,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2803867f2856bdc40bc78691d1adfa4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: e99517dfde9a54b4095633530f4019f4, type: 3}
+  - {fileID: 8300000, guid: 5f45775d72e1c444eb33fbc46ce07862, type: 3}
+  - {fileID: 8300000, guid: 228c7ed973b08c14285297cda2bcef78, type: 3}
+  - {fileID: 8300000, guid: 9328f8a6d6654ca498c9f82aabb9db58, type: 3}
+  - {fileID: 8300000, guid: 1d5c285be918cbe47bdc26759960c285, type: 3}
+  - {fileID: 8300000, guid: e038c4e9b7637af43ad7cd9ec5583949, type: 3}
+  - {fileID: 8300000, guid: bb0420ae92aeb0e418d3f82224e62d73, type: 3}
+  - {fileID: 8300000, guid: b645821d28b1a934f9d60ec354efd56b, type: 3}
+  - {fileID: 8300000, guid: 364d08766a500c74a988b0536bd5eb11, type: 3}
+  - {fileID: 8300000, guid: d45c55ace87b83143b651e6bc2666e5d, type: 3}
 --- !u!82 &3329891531345673368
 AudioSource:
   m_ObjectHideFlags: 0
