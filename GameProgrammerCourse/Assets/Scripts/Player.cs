@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     string _whoFastFell;
     string _verticalAxis;
     int _layerMask;
+    AudioSource _audioSource;
 
     public int PlayerNumber => _playerNumber;
 
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _startPosition = transform.position;
         _jumpsRemaining = _maxJumps;
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -130,6 +132,8 @@ public class Player : MonoBehaviour
         _fallTimer = 0;
         _jumpTimer = 0;
         _canFastFall = true;
+        if(_audioSource != null)
+            _audioSource.Play();
     }
 
     private bool ShouldStartJump()
