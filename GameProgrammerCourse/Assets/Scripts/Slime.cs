@@ -8,6 +8,7 @@ public class Slime : MonoBehaviour
     [SerializeField] Transform _leftSensor;
     [SerializeField] Transform _rightSensor;
     [SerializeField] Sprite _deadSprite;
+    AudioSource _audioSource;
     Rigidbody2D _rigidbody2D;
     float _direction = -1f;
     
@@ -16,6 +17,7 @@ public class Slime : MonoBehaviour
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -83,6 +85,8 @@ public class Slime : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
+        if (_audioSource != null)
+            _audioSource.Play();
 
         float alpha = 1f;
         while(alpha > 0)
