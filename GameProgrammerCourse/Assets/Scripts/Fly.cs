@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fly : MonoBehaviour
+public class Fly : MonoBehaviour, ITakeDamage
 {
     Vector3 _startPosition;
     Vector2 _direction = Vector2.up;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,11 @@ public class Fly : MonoBehaviour
         {
             _direction *= -1;
         }
+    }
+
+    public void TakeDamage()
+    {
+        gameObject.SetActive(false);
     }
 
 }

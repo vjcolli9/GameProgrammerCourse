@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour
+public class Slime : MonoBehaviour, ITakeDamage
 {
     [SerializeField] Transform _leftSensor;
     [SerializeField] Transform _rightSensor;
@@ -65,7 +63,7 @@ public class Slime : MonoBehaviour
         Vector2 normal = collision.contacts[0].normal;
         if (normal.y <= -0.5)
         {
-            StartCoroutine(Die());
+            TakeDamage();
         }
         else
         {
@@ -99,5 +97,10 @@ public class Slime : MonoBehaviour
         
         spriteRenderer.color = new Color();
         //Destroy(gameObject);
+    }
+
+    public void TakeDamage()
+    {
+        StartCoroutine(Die());
     }
 }

@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class Breakable : MonoBehaviour
+public class Breakable : MonoBehaviour, ITakeDamage
 {
+    public void TakeDamage()
+    {
+        TakeHit();
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.GetComponent<Player>() == null)
