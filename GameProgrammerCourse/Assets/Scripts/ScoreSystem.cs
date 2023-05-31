@@ -5,23 +5,25 @@ public class ScoreSystem : MonoBehaviour
 {
     public static event Action<int> OnScoreChanged;
 
-    static int _score;
+    public static int Score { get; private set; }
     static int _highScore;
+
 
     private void Start()
     {
         _highScore = PlayerPrefs.GetInt("HighScore");
+        Score = 0;
     }
 
     public static void Add(int points)
     {
-        _score += points;
-        OnScoreChanged?.Invoke(_score);
-        Debug.Log($"Score = {_score}");
+        Score += points;
+        OnScoreChanged?.Invoke(Score);
+        Debug.Log($"Score = {Score}");
 
-        if(_score > _highScore)
+        if(Score > _highScore)
         {
-            _highScore = _score;
+            _highScore = Score;
             Debug.Log("High Score " + _highScore);
 
             PlayerPrefs.SetInt("HighScore", _highScore);
