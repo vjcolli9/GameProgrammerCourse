@@ -5,16 +5,25 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     [SerializeField] float _launchForce = 5;
+    [SerializeField] float _bounceForce = 5f;
+    int _bouncesRemaining = 3;
+    Rigidbody2D _rigidbody;
+
+    public float Direction { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(_launchForce, 0);
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody.velocity = new Vector2(_launchForce * Direction, _bounceForce);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        _bouncesRemaining--;
+        if (_bouncesRemaining < 0)
+            Destroy(gameObject);
+        else
+            _rigidbody.velocity = new Vector2(_launchForce * Direction, _bounceForce);
     }
 }

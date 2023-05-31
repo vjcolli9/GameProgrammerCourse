@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireballPrefab: {fileID: 8724975654493393229, guid: e12357ffb0b3ade49ade3893d2184e65, type: 3}
+  _playerNumber: 1
+  _fireRate: 1
 --- !u!114 &8995046721325672765
 MonoBehaviour:
   m_ObjectHideFlags: 0
