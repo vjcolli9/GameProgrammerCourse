@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 382229181}
   m_Layer: 0
   m_Name: brickWall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6838,7 +6838,7 @@ GameObject:
   - component: {fileID: 582240181}
   m_Layer: 0
   m_Name: brickWall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8185,6 +8185,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6685735345159520973, guid: 6196b5b0c36baa444b087c373bf5cb22, type: 3}
   m_PrefabInstance: {fileID: 6685735344404248492}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1126368649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126368650}
+  m_Layer: 31
+  m_Name: Right Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1126368650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126368649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -0.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 71769378}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1132419568
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,6 +10177,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4522965289380021600, guid: 4213d0a922ddced48b2f8ad28c0ae2f5, type: 3}
   m_PrefabInstance: {fileID: 231698561}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1748019163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748019164}
+  m_Layer: 31
+  m_Name: Left Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748019164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748019163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: -0.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 71769378}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1762141135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1972471962757218229, guid: e84d7af721a07864cbd6d055cdf12230, type: 3}
@@ -12349,5 +12411,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8995046721325672765, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
+      propertyPath: _leftWallSensor
+      value: 
+      objectReference: {fileID: 1748019164}
+    - target: {fileID: 8995046721325672765, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
+      propertyPath: _rightWallSensor
+      value: 
+      objectReference: {fileID: 1126368650}
+    - target: {fileID: 8995046721325672767, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 733a700249c8a1c4da7cd509dda329e6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}

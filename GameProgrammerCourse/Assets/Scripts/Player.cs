@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float _fastFallForce = 1;
     [SerializeField] int _maxJumps = 2;
     [SerializeField] Transform _feet;
+    [SerializeField] Transform _leftSensor;
+    [SerializeField] Transform _rightSensor;
     [SerializeField] float _downPull = 0.1f;
     [SerializeField] float _fastFallTimer = 0.45f;
     [SerializeField] float _maxJumpDuration = 0.1f;
@@ -38,6 +40,9 @@ public class Player : MonoBehaviour
     string _verticalAxis;
     int _layerMask;
     AudioSource _audioSource;
+    [SerializeField] Transform _leftWallSensor;
+    [SerializeField] Transform _rightWallSensor;
+    [SerializeField] float _wallSlideSpeed = 1f;
 
     public int PlayerNumber => _playerNumber;
 
@@ -72,6 +77,13 @@ public class Player : MonoBehaviour
 
         UpdateAnimator();
         UpdateSpriteDirection();
+
+        if (ShouldSlide())
+        {
+            Slide();
+            return;
+        }
+            
 
         if (ShouldStartJump())
             Jump();
@@ -112,6 +124,33 @@ public class Player : MonoBehaviour
         }
 
 
+    }
+
+    void Slide()
+    {
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, -_wallSlideSpeed);
+    }
+
+    bool ShouldSlide()
+    {
+        if (_isGrounded)
+            return false;
+
+        if(_horizontal < 0)
+        {
+            var hit = Physics2D.OverlapCircle(_leftWallSensor.position, 0.1f);
+            if (hit != null && hit.CompareTag("Wall"))
+                return true;
+        }
+
+        if (_horizontal > 0)
+        {
+            var hit = Physics2D.OverlapCircle(_rightWallSensor.position, 0.1f);
+            if (hit != null && hit.CompareTag("Wall"))
+                return true;
+        }
+
+        return false;
     }
 
     private void ContinueJump()
@@ -174,6 +213,7 @@ public class Player : MonoBehaviour
         bool walking = _horizontal != 0;
         _animator.SetBool("Walk", walking);
         _animator.SetBool("Jump", ShouldContinueJump());
+        _animator.SetBool("Slide", ShouldSlide());
     }
 
     void UpdateIsGrounded()
