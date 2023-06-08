@@ -12412,6 +12412,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8995046721325672765, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
+      propertyPath: _braking
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995046721325672765, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
+      propertyPath: _airBraking
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995046721325672765, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
+      propertyPath: _acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995046721325672765, guid: edaa5a32ca1738d46b2fccbe8d8da5a7, type: 3}
       propertyPath: _leftWallSensor
       value: 
       objectReference: {fileID: 1748019164}

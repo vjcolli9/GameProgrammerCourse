@@ -43,6 +43,10 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _leftWallSensor;
     [SerializeField] Transform _rightWallSensor;
     [SerializeField] float _wallSlideSpeed = 1f;
+    [SerializeField] float _acceleration = 1f;
+    [SerializeField] float _braking = 1f;
+    [SerializeField] float _airAcceleration = 1f;
+    [SerializeField] float _airBraking = 1f;
 
     public int PlayerNumber => _playerNumber;
 
@@ -80,7 +84,10 @@ public class Player : MonoBehaviour
 
         if (ShouldSlide())
         {
-            Slide();
+            if (ShouldStartJump())
+                WallJump();
+            else
+                Slide();
             return;
         }
             
@@ -126,6 +133,11 @@ public class Player : MonoBehaviour
 
     }
 
+    private void WallJump()
+    {
+        _rigidbody2D.velocity = new Vector2(-_horizontal * _jumpVelocity, _jumpVelocity * 1.5f);
+    }
+
     void Slide()
     {
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, -_wallSlideSpeed);
@@ -134,6 +146,9 @@ public class Player : MonoBehaviour
     bool ShouldSlide()
     {
         if (_isGrounded)
+            return false;
+
+        if (_rigidbody2D.velocity.y > 0)
             return false;
 
         if(_horizontal < 0)
@@ -182,7 +197,11 @@ public class Player : MonoBehaviour
 
     private void MoveHorizontal()
     {
-        _rigidbody2D.velocity = new Vector2(_horizontal * _speed, _rigidbody2D.velocity.y);
+        float smoothnessMultiplier = _horizontal == 0 ? _braking : _acceleration;
+        if(_isGrounded == false)
+            smoothnessMultiplier = _horizontal == 0 ? _airBraking : _airAcceleration;
+        var newHorizontal = Mathf.Lerp(_rigidbody2D.velocity.x, _horizontal * _speed, Time.deltaTime * smoothnessMultiplier);
+        _rigidbody2D.velocity = new Vector2(newHorizontal, _rigidbody2D.velocity.y);
     }
 
     private void SlipHorizontal()
